@@ -16,6 +16,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -1112,7 +1113,7 @@ public class SourceFilter extends AbstractFilter {
             }
 
             File webappsDirectory = new File(catalinaBase, "webapps");
-            File war = File.createTempFile("dari-reloader-", null, webappsDirectory);
+            File war = Files.createTempFile(webappsDirectory.toPath(), "dari-reloader-", null).toFile();
             try {
 
                 URL warUrl = new URL(

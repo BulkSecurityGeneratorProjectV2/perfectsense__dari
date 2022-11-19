@@ -29,6 +29,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -758,7 +759,7 @@ public final class CodeUtils {
                     agentFile = new File(agentDir, agentName + ".jar");
 
                 } catch (IOException e) {
-                    agentFile = File.createTempFile(agentName + "-", ".jar");
+                    agentFile = Files.createTempFile(agentName + "-", ".jar").toFile();
                 }
 
                 Manifest manifest = new Manifest();

@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 
@@ -268,7 +269,7 @@ public class CloudStorageItem extends AbstractStorageItem {
 
     @Override
     protected void saveData(InputStream dataInput) throws IOException {
-        File temp = File.createTempFile("jclouds", null);
+        File temp = Files.createTempFile("jclouds", null).toFile();
 
         try {
             OutputStream tempOutput = new FileOutputStream(temp);

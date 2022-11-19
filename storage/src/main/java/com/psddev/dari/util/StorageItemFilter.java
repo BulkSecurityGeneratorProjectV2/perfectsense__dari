@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -149,7 +150,7 @@ public class StorageItemFilter extends AbstractFilter {
         try {
 
             try {
-                file = File.createTempFile("cms.", ".tmp");
+                file = Files.createTempFile("cms.", ".tmp").toFile();
                 fileItem.write(file);
             } catch (Exception e) {
                 throw new IOException("Unable to write [" + (StringUtils.isBlank(fileItem.getName()) ? fileItem.getName() : "fileItem") + "] to temporary file.", e);
